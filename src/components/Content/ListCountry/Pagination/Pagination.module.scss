@@ -1,0 +1,206 @@
+
+@import "../../../../Help";
+
+.wrapper {
+    width: 100%;
+    margin-top: 40px;
+    @extend %content;
+
+    button {
+        border: none;
+        outline: none;
+        user-select: none;
+        transform: scale(1);
+        transition: all .2s ease-out;
+    
+        &:hover {
+            transform: scale(1.1);
+            transition: all .2s ease-out;
+        }
+    }
+
+    &.dark {
+        .inner {
+            .info {
+                color: $darkModeText;
+            }
+            .pagination {
+                .btnPaginate {
+                    svg {
+                        fill: $darkModeText;
+                    }
+                    &:hover svg {
+                        fill: $lightModeText;
+                    }
+                }  
+                .btnDots {
+                    color: $darkModeText;
+                    &:hover {
+                        color: $lightModeText;
+                    }
+                } 
+                .paginateList {
+                    &Item {
+                        color: $darkModeText;
+                        &:hover {
+                            color: $lightModeText;
+                        }
+                        &.active { color: red }
+                    }
+                }
+            }
+        }
+    }
+
+    .inner {
+
+        .pagination {
+            @extend %content;
+    
+            .btnPaginate {
+                width: 40px;
+                height: 40px;
+                border-radius: 3px;
+                cursor: pointer;
+                @extend %content;
+                background-color: transparent;
+                transition: all .2s ease-out;
+
+                @media (max-width: 370px) {
+                    width: 30px;
+                    height: 30px;
+                }
+    
+                svg {
+                    width: 50%;
+                    height: 50%;
+                    fill: $lightModeText;
+                    transition: all .2s ease-out;
+                }
+    
+                &:hover {
+                    background-color: $paginateELHoverColor;
+                    transition: all .2s ease-out;
+                }
+    
+                &:hover svg {
+                    fill: $darkModeText;
+                    transition: all .2s ease-out;
+                }
+
+                &.disable {
+                    pointer-events: none;
+                    user-select: none;
+                    opacity: 0.4;
+                    transition: all .1s ease;
+                }
+
+            }
+    
+            .btnDots {
+                width: 40px;
+                height: 40px;
+                border-radius: 3px;
+                cursor: pointer;
+                @extend %content;
+                background-color: transparent;
+                transition: all .2s ease-out;
+                color: $lightModeText;
+                font-size: 16px;
+                font-weight: 600;
+
+                @media (max-width: 370px) {
+                    width: 30px;
+                    height: 30px;
+                }
+    
+                &:hover {
+                    color: $darkModeText;
+                    background-color: $paginateELHoverColor;
+                    transition: all .2s ease-out;
+                }
+
+                &.disable {
+                    pointer-events: none;
+                    user-select: none;
+                    opacity: 0.4;
+                    transition: all .1s ease;
+                }
+
+            }
+    
+            .paginateList {
+                margin: 0 10px;
+                @extend %content;
+                justify-content: flex-start;
+    
+                &Item {
+                    width: 40px;
+                    height: 40px;
+                    border-radius: 3px;
+                    cursor: pointer;
+                    @extend %content;
+                    background-color: transparent;
+                    transition: all .2s ease-out;
+                    color: $lightModeText;
+                    font-size: 16px;
+                    font-weight: 600;
+
+                    @media (max-width: 370px) {
+                        width: 30px;
+                        height: 30px;
+                    }
+    
+                    &:hover {
+                        color: $darkModeText;
+                        background-color: $paginateELHoverColor;
+                        transition: all .2s ease-out;
+                    }
+
+                    &.active {
+                        color: red;
+                    }
+                }
+    
+                &Item:nth-child(2) {
+                    margin: 0px 10px;
+                }
+            }
+    
+            .prevBtn {
+                margin-right: 10px;
+                transform: scale(1) rotate(90deg);
+    
+                &:hover {
+                    transform: scale(1.1) rotate(90deg);
+                    transition: all .2s ease-out;
+                }
+    
+            }
+    
+            .nextBtn {
+                margin-left: 10px;
+                transform: scale(1) rotate(-90deg);
+    
+                &:hover {
+                    transform: scale(1.1) rotate(-90deg);
+                    transition: all .2s ease-out;
+                }
+    
+            }
+    
+        }
+
+        .info {
+            width: 100%;
+            text-align: center;
+            margin-top: 16px;
+            font-size: 16px;
+            font-weight: 600;
+            user-select: none;
+            color: $lightModeText;
+        }
+
+    }
+
+}

@@ -1,0 +1,58 @@
+
+@import "../../Help";
+
+.loader-image {
+    position: absolute;
+    background-color: $lightModeElements;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    @extend %content;
+    opacity: 1;
+
+    &.dark {
+        background-color: $darkModeElements;
+        &:after {
+            content: "";
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: transparent;
+            border: 3px solid $lightModeElements;
+            border-left: 3px solid transparent;
+            animation: loader 1s linear infinite;
+        }
+    }
+
+    &:after {
+        content: "";
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background-color: transparent;
+        border: 3px solid $darkModeElements;
+        border-left: 3px solid transparent;
+        animation: loader 1s linear infinite;
+    }
+
+    @keyframes loader {
+        from { transform: rotate(0deg) }
+        to { transform: rotate(360deg) }
+    }
+
+    &-exit {
+        opacity: 1;
+    }
+
+    &-exit-active {
+        opacity: 0;
+        transition: all .3s ease-out;
+
+        &:after {
+            animation: none;
+        }
+
+    }
+
+}

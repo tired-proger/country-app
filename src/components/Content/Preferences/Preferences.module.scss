@@ -1,0 +1,18 @@
+
+@import "../../../Help";
+
+.contentPreferences {
+    width: 100%;
+    padding: 40px 0px;
+    @extend %content;
+    justify-content: space-between;
+
+    @media (max-width: 700px) {
+        justify-content: flex-start;
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+}
+
+

@@ -1,0 +1,307 @@
+@import "../../Help";
+
+.wrapperLoader {
+    position: relative;
+    padding: 40px;
+}
+
+.wrapper {
+    background-color: $lightBg;
+    min-height: calc(100vh - 75.5px);
+    padding: 0px 20px;
+    padding-top: 50px;
+
+    &.dark {
+        background-color: $darkBg;
+        .inner {
+            .btnBack {
+                color: $darkModeText;
+                background-color: $darkModeElements;
+                svg {
+                    fill: $darkModeText;
+                }
+            }
+            .content {
+                .info {
+                    .title {
+                        color: $darkModeText;
+                    }
+                    .rows {
+                        .row {
+                            &Block {
+                                & > span {
+                                    &:first-child { color: $darkModeText; }
+                                    &:last-child { color: $darkModeText; }
+                                }
+                            }
+                        }
+                    }
+                }
+                .footerInfo {
+                    .footerTitle {
+                        color: $darkModeText;
+                    }
+                    .borderCountry {
+                        color: $darkModeText;
+                        background-color: $darkModeElements;
+                        &:hover {
+                            background-color: lighten($darkModeElements, 10);
+                            transition: all .2s ease-out;
+                        }
+                    }
+                    .defaultTitleBorders {
+                        color: $darkModeText;
+                    }
+                }
+            }
+        }
+    }
+
+    .inner {
+        max-width: $containerWidth;
+        margin: 0 auto;
+
+        //navigate back btn
+        .btnBack {
+            margin-bottom: 50px;
+            border-radius: 6px;
+            box-shadow: $shadowLight;
+            background-color: $lightModeElements;
+            cursor: pointer;
+            border: none;
+            outline: none;
+            color: $lightModeText;
+            padding: 12px 24px;
+            @extend %content;
+            min-width: 140px;
+            text-align: center;
+
+            svg {
+                width: 15px;
+                height: 20px;
+                fill: $lightModeText;
+                margin-right: 10px;
+                transition: all .2s ease-out;
+                transform: translateX(0%);
+            }
+
+            &:hover svg {
+                transform: translateX(-50%);
+                transition: all .2s ease-out;
+            }
+
+            span {
+                font-size: 18px;
+                font-weight: 600;   
+            }
+
+        }
+
+        //content part
+        .content {
+            width: 100%;
+            padding-bottom: 20px;
+
+            &Wrapper {
+                @extend %content;
+
+                @media (max-width: 900px) {
+                    flex-direction: column;
+                    align-items: flex-start;
+                }
+                
+                .flag {
+                    overflow: hidden;
+                    flex: 0 0 500px;
+                    max-height: 400px;
+                    height: 100vh;
+                    position: relative;
+                    margin-right: 60px;
+
+                    @media (max-width: 900px) {
+                        flex: 0 1 300px;
+                        min-width: 100%;
+                        margin-right: 0px;
+                        margin-bottom: 30px;
+                        overflow: visible;
+                        max-height: 300px;
+                    }
+
+                    @media (max-width: 400px) {
+                        max-height: 250px;
+                    }
+    
+                    img {
+                        width: 100%;
+                        height: 100%;
+                        object-fit: contain;
+
+                        @media (max-width: 900px) {
+                            object-position: center top;
+                        }
+                    }
+
+                }
+    
+                //content info part
+                .info {
+                    flex: 0 1 100%;
+
+                    @media (max-width: 900px) {
+                        width: 100%;
+                    }
+    
+                    .title {
+                        font-weight: bold;
+                        font-size: 34px;
+                        margin-bottom: 20px;
+                        color: $lightModeText;
+
+                        @media (max-width: 900px) {
+                            text-align: center;
+                            width: 100%;
+                        }
+                    }
+    
+                    //block with many inform about country
+                    .rows {
+                        display: flex;
+                        align-items: flex-start;
+                        justify-content: space-between;
+                        margin-bottom: 40px;
+    
+                        @media (max-width: 1050px) {
+                            justify-content: flex-start;
+                            flex-direction: column;
+                        }
+
+                        @media (max-width: 900px) {
+                            justify-content: space-between;
+                            flex-direction: row;
+                            max-width: 600px;
+                            margin: 0 auto;
+                        }
+
+                        @media (max-width: 520px) {
+                            justify-content: flex-start;
+                            flex-direction: column;
+                            margin: none;
+                            margin-bottom: 30px;
+                        }
+    
+                        .row {
+    
+                            &:first-child {
+                                @media (max-width: 1050px) {
+                                    margin-bottom: 30px;
+                                }
+                            }
+    
+                            //block row info
+                            &Block {
+    
+                                &:not(:last-child) {
+                                    margin-bottom: 10px;
+                                }
+    
+                                .countryName {
+                                    display: block;
+                                    max-width: 250px;
+                                }
+    
+                                .list {
+                                    display: block;
+                                    max-width: 250px;
+                                }
+    
+                                .countryPopulation {
+                                    display: block;
+                                    max-width: 250px;
+                                }
+    
+                                & > span {
+    
+                                    //title info
+                                    &:first-child {
+                                        font-size: 18px;
+                                        font-weight: 600;
+                                        margin-right: 5px;
+                                        color: $lightModeText;
+                                    }
+    
+                                    //text info
+                                    &:last-child {
+                                        font-size: 16px;
+                                        font-weight: 300;
+                                        color: $lightModeText;
+                                    }
+    
+                                }
+    
+                            }
+                        }
+                    }
+    
+                }
+            }
+
+            //border countries styles
+            .footerInfo {
+                display: flex;
+                align-items: center;
+                flex-wrap: wrap;
+                justify-content: flex-start;
+                
+                .parentBorders {
+                    position: relative;
+                    min-height: 40px;
+                    width: 100%;
+                    height: 100%;
+                    display: flex;
+                    align-items: flex-start;
+                    flex-wrap: wrap;
+                }
+                
+                .footerTitle {
+                    font-size: 18px;
+                    font-weight: 600;
+                    margin-right: 10px;
+                    margin-bottom: 12px;
+                    color: $lightModeText;
+                }
+                
+                .borderCountry {
+                    font-size: 18px;
+                    text-decoration: none;
+                    color: $lightModeText;
+                    font-weight: 300;
+                     border-radius: 3px;
+                    box-shadow: $shadowLight;
+                    background-color: $lightModeElements;
+                    @extend %content;
+                    text-align: center;
+                    cursor: pointer;
+                    padding: 6px 20px;
+                     margin-bottom: 8px;
+                    transition: all .2s ease-out;
+                
+                    &:hover {
+                        background-color: darken($lightModeElements, 10);
+                        transition: all .2s ease-out;
+                    }
+                
+                    &:not(:last-child) {
+                        margin-right: 8px;
+                    }
+                }
+                
+                .defaultTitleBorders {
+                    margin-bottom: 10px;
+                    color: $lightModeText;
+                }
+            }
+        }
+
+    }
+
+}

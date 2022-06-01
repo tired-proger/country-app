@@ -1,0 +1,105 @@
+
+@import "../../Help";
+
+.header {
+    position: relative;
+    padding: 20px;
+    box-shadow: $shadowLight;
+    background-color: $lightModeElements;
+    min-height: 75px;
+
+    &.dark {
+        background-color: $darkModeElements;
+        .headerWrapper {
+            .logo {
+                color: $darkModeText;
+            }
+            .btnTheme {
+                .btnThemeText {
+                    color: $darkModeText;
+                }
+            }
+        }
+    } 
+
+    &Wrapper {
+        margin: 0 auto;
+        width: 100%;
+        max-width: $containerWidth;
+        @extend %content;
+        justify-content: space-between;
+
+        .logo {
+            font-size: 26px;
+            font-weight: bold;
+            text-decoration: none;
+            color: $lightModeText;
+
+            @media (max-width: 480px) {
+                font-size: 18px;
+            }
+
+            @media (max-width: 380px) {
+                font-size: 16px;
+            }
+
+        }
+
+        .btnTheme {
+            border: none;
+            background: none;
+            cursor: pointer;
+            outline: none;
+            @extend %content;
+            padding: 6px;
+
+            &Icon {
+                margin-right: 4px;
+                position: relative;
+                width: 18px;
+                height: 18px;
+                @extend %content;
+
+                svg {
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                }
+
+                .moonStroke {
+                    fill: $lightModeText;
+                }
+
+                .moonFill {
+                    fill: $darkModeText;
+                }
+
+            }
+
+            &Text {
+                font-size: 16px;
+                font-weight: bold;
+                color: $lightModeText;
+
+                @media (max-width: 480px) {
+                    font-size: 14px;
+                }
+
+            }
+        }
+
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+

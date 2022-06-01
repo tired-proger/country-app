@@ -1,0 +1,243 @@
+.react-select-container {
+    min-width: 100%;
+    font-size: 18px;
+    font-weight: 600;
+    color: $lightModeText;
+  
+    .react-select__control {
+      background-color: $lightModeElements;
+      box-shadow: $shadowLight;
+      outline: none;
+      padding: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      transform: scale(1);
+      border: 2px solid $lightModeElements;
+      transition: all .2s ease-out;
+  
+      &:hover { border: 2px solid black; }
+  
+      &:active {
+        transform: scale(0.9);
+        transition: all .2s ease-out;
+      }
+  
+      .react-select__value-container {
+        border: none;
+        .react-select__single-value {
+          color: $lightModeText;
+        }
+      }
+  
+      .react-select__indicators {
+        border: none;
+        border-width: 0px;
+        box-shadow: none;
+  
+        svg {
+          width: 14px;
+          height: 14px;
+          fill: $lightModeText;
+          animation: rotateArrowDown 0.2s ease-out forwards;
+        }
+  
+      }
+  
+      &--menu-is-open {
+  
+        border: 2px solid black;
+  
+        &:hover { border: 2px solid black; }
+        &:active { border: 2px solid black; }
+        &:focus { border: 2px solid black; }
+  
+        .react-select__indicators {
+          svg {
+            transform: rotate(-180deg);
+            transition: all .2s ease-out;
+            animation: rotateArrowUp 0.2s ease-out forwards;
+          }
+        }
+  
+      }
+  
+      .react-select__indicator-separator {
+        display: none;
+      }
+    }
+  
+    .react-select__menu {
+      background-color: $lightModeElements;
+      box-shadow: $shadowLight;
+      outline: none;
+      border: 2px solid $darkModeElements;
+      transition: all .3s ease-out;
+  
+      .react-select__option {
+        cursor: pointer;
+  
+        &:hover {
+          background-color: hsla(210, 13%, 21%, 0.370);
+          color: $darkModeText;
+        }
+  
+        &--is-focused {
+          background-color: hsla(210, 13%, 21%, 0.370);
+          color: $darkModeText;
+        }
+  
+        &--is-selected {
+          background-color: $darkModeElements;
+          color: $darkModeText;
+        }
+      }
+    }
+  
+  }
+  
+  .menu--select {
+    animation: showMenu 0.3s ease-out forwards;
+    &.hide--menu {
+      animation: hideMenu .2s ease-out forwards;
+    }
+  }
+  
+  @keyframes rotateArrowUp {
+    0%{
+      transform: rotate(0deg);
+    }
+    100%{
+      transform: rotate(-180deg);
+    }
+  }
+  
+  @keyframes rotateArrowDown {
+    0%{
+      transform: rotate(-180deg);
+    }
+    100%{
+      transform: rotate(0deg);
+    }
+  }
+  
+  @keyframes showMenu {
+    0%{
+      transform: translateY(10%);
+      opacity: 0;
+    }
+    100%{
+      transform: translateY(0%);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes hideMenu {
+    0%{
+      transform: translateY(0%);
+      opacity: 1;
+    }
+    100%{
+      transform: translateY(10%);
+      opacity: 0;
+    }
+  }
+
+
+
+//dark styles
+.react-select-container-dark {
+  min-width: 100%;
+  font-size: 18px;
+  font-weight: 600;
+  color: $darkModeText;
+
+  .react-select__control {
+    background-color: $darkModeElements;
+    box-shadow: $shadowLight;
+    outline: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transform: scale(1);
+    border: 2px solid $darkModeElements;
+    transition: all .2s ease-out;
+
+    &:hover { border: 2px solid $lightModeElements; }
+
+    &:active {
+      transform: scale(0.9);
+      transition: all .2s ease-out;
+    }
+
+    .react-select__value-container {
+      border: none;
+      .react-select__single-value {
+        color: $darkModeText;
+      }
+    }
+
+    .react-select__indicators {
+      border: none;
+      border-width: 0px;
+      box-shadow: none;
+
+      svg {
+        width: 14px;
+        height: 14px;
+        fill: $lightModeElements;
+        animation: rotateArrowDown 0.2s ease-out forwards;
+      }
+
+    }
+
+    &--menu-is-open {
+
+      border: 2px solid $lightModeElements;
+
+      &:hover { border: 2px solid $lightModeElements; }
+      &:active { border: 2px solid $lightModeElements; }
+      &:focus { border: 2px solid $lightModeElements; }
+
+      .react-select__indicators {
+        svg {
+          transform: rotate(-180deg);
+          transition: all .2s ease-out;
+          animation: rotateArrowUp 0.2s ease-out forwards;
+        }
+      }
+
+    }
+
+    .react-select__indicator-separator {
+      display: none;
+    }
+  }
+
+  .react-select__menu {
+    background-color: $darkModeElements;
+    box-shadow: $shadowLight;
+    outline: none;
+    border: 2px solid $lightModeElements;
+    transition: all .3s ease-out;
+
+    .react-select__option {
+      cursor: pointer;
+
+      &:hover {
+        background-color: rgba(90, 97, 104, 0.37);
+        color: $darkModeText;
+      }
+
+      &--is-focused {
+        background-color: rgba(90, 97, 104, 0.37);
+        color: $darkModeText;
+      }
+
+      &--is-selected {
+        background-color: $darkBg;
+        color: $darkModeText;
+      }
+    }
+  }
+
+}

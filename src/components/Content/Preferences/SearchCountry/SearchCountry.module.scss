@@ -1,0 +1,110 @@
+
+@import "../../../../Help";
+
+.searchCountry {
+    max-width: 400px;
+    width: 100%;
+    background-color: $lightModeElements;
+    border-radius: 5px;
+    box-shadow: $shadowLight;
+    @extend %content;
+    justify-content: flex-start;
+    padding: 0px 20px;
+    transform: scale(1);
+    border: 2px solid $lightModeElements;
+    transition: all .2s ease-out;
+
+    &.dark {
+        background-color: $darkModeElements;
+        border: 2px solid $darkModeElements;
+        &.focus {
+            border: 2px solid $lightModeElements;
+        }
+        .searchCountryBtn {
+            svg { fill: $lightModeElements }
+        }
+        .wrapper {
+            .label {
+                color: $darkModeText;
+            }
+            .input {
+                color: $darkModeText;
+            }   
+        }
+    }
+
+    &.focus {
+        border: 2px solid $darkModeElements;
+        transform: scale(1.1);
+        transition: all .2s ease-out;
+    }
+
+    @media (max-width: 1170px) {
+        &.focus {
+            transform: scale(1);
+        }
+    }
+
+    @media (max-width: 700px) {
+        margin-bottom: 20px;
+    }
+
+    &.loading {
+        pointer-events: none;
+        opacity: 0.4;
+        transition: all .2s ease-out;
+    }
+
+    &Btn {
+        flex: 0 0 23px;
+        height: 23px;
+        position: relative;
+        @extend %content;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        background: none;
+        margin-right: 14px;
+        pointer-events: none;
+
+        svg {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            fill: $darkModeElements;
+            user-select: none;
+        }
+    }
+
+    .wrapper {
+        position: relative;
+        flex: 1 1 100%;
+
+        .label {
+            position: absolute;
+            font-size: 18px;
+            font-weight: 300;
+            top: 50%;
+            left: 0px;
+            transform: translateY(-50%);
+            pointer-events: none;
+            user-select: none;
+            color: $lightModeText;
+        }
+
+        .input {
+            padding: 12px 0px;
+            min-width: 100%;
+            width: 100%;
+            font-size: 18px;
+            font-weight: 300;
+            outline: none;
+            border: none;
+            color: $lightModeText;
+            background-color: transparent;
+        }
+    }
+}
+
+
+
