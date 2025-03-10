@@ -20,12 +20,21 @@ export default function CardCountry() {
 
     useEffect(() => {
         async function getDataCountry() {
+            
             setIsLoader(true);
             setIsLoaderImg(true);
-            let response = await fetch(`https://restcountries.com/v3.1/name/${name}?fullText=true`)
-            let data = await response.json();
-            setIsLoader(false);
-            setCountryData(data[0]);
+            let data = null;
+
+            try {
+                let response = await fetch(`https://restcountries.com/v3.1/name/${name}?fullText=true`)
+                data = await response.json();
+            } catch(e) {
+                console.log(e);
+            } finally {
+                setIsLoader(false);
+                setCountryData(data[0]);
+            }
+            
         }
         getDataCountry();
     }, [name]);
@@ -47,14 +56,18 @@ export default function CardCountry() {
                         <div className={cl.contentWrapper}>
                             <div className={cl.flag}>
                                 <LoaderImage 
-                                loader={isLoaderImg} 
-                                isLoadingCountry={true}
-                                passTheme={theme}
+                                    loader={isLoaderImg} 
+                                    isLoadingCountry={true}
+                                    passTheme={theme}
                                 />
-                                <img 
-                                src={countryData.flags.svg}
-                                onLoad={() => setIsLoaderImg(false)} alt="flag" 
-                                />
+                                {
+                                    isLoaderImg ||  (
+                                        <img 
+                                            src={countryData.flags.svg}
+                                            onLoad={() => setIsLoaderImg(false)} alt="flag" 
+                                        />
+                                    )
+                                }
                             </div>
                             <div className={cl.info}>
                                 <h1 className={cl.title}>{countryData.name.common}</h1>
