@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import GlobalSvgSelector from '../../../../GlobalSvgSelector'
 import cl from "./SearchCountry.module.scss"
@@ -15,6 +15,7 @@ export default function SearchCountry() {
 
     const [isFocus, setIsFocus] = useState(false);
     const [labelVisibility, setLabelVisibility] = useState(setDefaultValue);
+    const throttleInput = useRef({ timer: null });
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -37,13 +38,36 @@ export default function SearchCountry() {
 
         let inputValue = e.target.value;
 
-        if (inputValue.trim() === "") {
-            dispatch(resetListCountries());
-            return;
-        }
+        //debounce search
+        throttleInput.current.timer ? clearTimeout(throttleInput.current.timer) : null;
 
-        dispatch(setSearchValue(inputValue));
-        dispatch(setSearchListCountries(list));
+        throttleInput.current.timer = setTimeout(() => {
+            if (inputValue.trim() === "") {
+                dispatch(resetListCountries());
+                return;
+            }
+            dispatch(setSearchValue(inputValue));
+            dispatch(setSearchListCountries(list));
+        }, 200);
+
+        if (throttleInput.current.status) {
+            
+        } else {
+            throttleInput.current.status = true;
+            throttleInput.current.timer = setTimeout(() => {
+                if (inputValue.trim() === "") {
+                    dispatch(resetListCountries());
+                    throttleInput.current.status = false;
+                    clearTimeout(throttleInput.current.timer);
+                    return;
+                }
+                throttleInput.current.status = false;
+                clearTimeout(throttleInput.current.timer);
+                dispatch(setSearchValue(inputValue));
+                dispatch(setSearchListCountries(list));
+            }, 200);
+        }
+        
     }
 
     const getClasses = () => {
